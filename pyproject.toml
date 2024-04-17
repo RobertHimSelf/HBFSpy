@@ -1,0 +1,18 @@
+[project]
+name = "HBFSpy"
+version = "1.0"
+authors = [
+  { name="RobertHimSelf", email="167343312+RobertHimSelf@users.noreply.github.com." },
+]
+description = "A package making good backup."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/RobertHimSelf/HBFSpy"
+Issues = "https://github.com/RobertHimSelf/HBFSpy/issues"
