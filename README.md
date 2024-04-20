@@ -7,14 +7,7 @@
 
 之所以开源这个，是因为[阿里云盘的自动同步做得像一坨屎](https://www.zhihu.com/question/430549529/answer/3460904078)。
 
-## 系统支持
-本模块所基于的以下内容可能在一些系统上不被支持：
-* os.chmod
-  * 用于修改文件只读属性。
-  * stat.S_IWRITE
-
-此内容在 Emscripten 和 WASI 受限。详情参见：https://docs.python.org/zh-cn/3/library/intro.html#wasm-availability
-
+## 系统要求
 本模块所使用的以下内容是 Python 3.11 新加入的：
 * hashlib.file_digest
 
@@ -33,18 +26,18 @@
 ### 创建快照
 `make_snapshot(original_path, backup_path)`
 
-在 "backup_path" 中创建一份 "original_path" 文件夹的快照。
+在 "{backup_path}" 中创建一份 "{original_path}" 文件夹的快照。
 
-快照的具体信息将被保存至 "{backup_path}/snapshots/当前时间戳.json"
+快照的具体信息将被保存至 "{backup_path}/snapshots/{当前时间戳}.json"，
 
-请不要单独移动 "{backup_path}/snapshots/当前时间戳.json"
+返回“快照具体信息”的路径。
 
 ### 从快照重建文件
 `recover_from_snapshot(snapshot_path, recover_to)`
 
-snapshot_path 应当传入创建快照时，快照具体信息的路径，形如这种："{backup_path}/snapshots/当前时间戳.json"
+snapshot_path 应当传入创建快照时，快照具体信息的路径，
 
-recover_to 是恢复文件的位置。如果 recover_to 已经存在，则会删除 recover_to 中的所有文件，再从快照中重建文件。
+recover_to 应传入恢复文件的位置，应当为空文件夹的路径、或不存在（但可以被创建）的路径
 
 ### 删除快照
 如果只创建了一个快照，直接删除快照文件夹即可。
